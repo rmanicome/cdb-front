@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompaniesService {
-  private url = 'http://10.0.1.96:8080/cdb/api/v1.0.0/companies';
+  private url = 'http://127.0.0.1:8080/cdb/api/v1.0.0/companies';
 
   constructor(
     private _httpClient: HttpClient

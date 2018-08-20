@@ -15,7 +15,6 @@ export class ComputersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Here');
     this._computerService.getAllComputer().subscribe(computers => this.computers = computers, error => console.error(error), () => {});
   }
 
