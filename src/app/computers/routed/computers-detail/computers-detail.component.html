@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+  <button mat-icon-button style='float: right;' routerLink="/computers/{{computer.id}}"><mat-icon>update</mat-icon></button>
+  <button mat-icon-button style='float: right;' (click)="doDelete()"><mat-icon>delete</mat-icon></button>
+  <mat-card-header>
+    <mat-card-title>{{computer.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="expanded" class="e2e-expanded">
+      <p>
+        {{computer.introduced}}
+        {{computer.discontinued}}
+      </p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="toggle()" class="e2e-toggle-button" [ngPlural]="expanded">
+      <ng-template ngPluralCase="=false">Expand</ng-template>
+      <ng-template ngPluralCase="=true">Collapse</ng-template>
+    </button>
+    <button mat-raised-button routerLink="/computers/{{computer.id}}">Details</button>
+  </mat-card-actions>
+</mat-card>
