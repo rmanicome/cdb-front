@@ -2,18 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ComputersListComponent } from './computers-list/computers-list.component';
-import { ComputersDetailComponent } from './computers-detail/computers-detail.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ComputersAddComponent } from './computers-add/computers-add.component';
+import { ComputersUpdateComponent } from './computers-update/computers-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ComputersListComponent,
-    ComputersDetailComponent
+    ComputersAddComponent,
+    ComputersUpdateComponent
   ]
 })
 export class ComputersRoutedModule { }

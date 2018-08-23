@@ -1,0 +1,8 @@
+.example-container {
+  display: block;
+  align-content: center;
+}
+
+.example-container > * {
+  width: 100%;
+}

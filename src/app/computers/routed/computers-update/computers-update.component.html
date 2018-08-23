@@ -1,0 +1,43 @@
+<mat-card class="example-container">
+    <mat-card-title>Update Computer</mat-card-title>
+
+    <form [formGroup]="updateForm">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" [formControl]="name" required [(ngModel)]="computer.name">
+        <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput type="date" placeholder="Introduced Date" [(ngModel)]="computer.introducedDate">
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput type="date" placeholder="Discontinued Date" [(ngModel)]="computer.discontinuedDate">
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <input matInput [matDatepicker]="introduced" placeholder="Choose a date" [(ngModel)]="computer.introducedDate">
+        <mat-datepicker-toggle matSuffix [for]="introduced"></mat-datepicker-toggle>
+        <mat-datepicker #introduced></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="discontinued" placeholder="Choose a date" [(ngModel)]="computer.discontinuedDate">
+        <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
+        <mat-datepicker #discontinued></mat-datepicker>
+      </mat-form-field> -->
+
+      <mat-form-field>
+        <mat-select placeholder="Company" [(ngModel)]="computer.company">
+          <mat-option value="null">---</mat-option>
+          <mat-option *ngFor="let company of companies" value="{{company}}">{{company.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="margin-top: 5px;">
+        <button mat-raised-button style='width: 50%;' class="button" (click)="sendForm()">Update</button>
+        <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" routerLink="/computers">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+

@@ -1,0 +1,32 @@
+<div class="example-container">
+  <mat-card-title>Add Computer</mat-card-title>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" [formControl]="name" required [(ngModel)]="computer.name">
+    <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field style="margin-top: 5px">
+    <input matInput [max]="today" [matDatepicker]="introduced" placeholder="Introduced Date" [(ngModel)]="introducedDate">
+    <mat-datepicker-toggle matSuffix [for]="introduced"></mat-datepicker-toggle>
+    <mat-datepicker #introduced></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput [min]="computer.introducedDate" [max]="today" [matDatepicker]="discontinued"placeholder="Discontinued Date" [(ngModel)]="discontinuedDate">
+      <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
+      <mat-datepicker #discontinued></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Company" [(ngModel)]="companyId">
+      <mat-option value=null>---</mat-option>
+      <mat-option *ngFor="let company of companies" value="{{company.id}}">{{company.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div style="margin-top: 5px;">
+    <button mat-raised-button style='width: 50%;' class="button" (click)="sendForm()">Create</button>
+    <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="dialogRef.close()">Cancel</button>
+  </div>
+</div>

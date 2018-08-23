@@ -18,6 +18,6 @@ export class CompaniesService {
   }
 
   getById(id: string): Observable<Company> {
-    return this._httpClient.get<Company>(`${this.url}/${id}`);
+    return this._httpClient.get<Company>(`${this.url}/detail/${id}`);
   }
 }

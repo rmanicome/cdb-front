@@ -3,7 +3,7 @@ import { Company } from './company.model';
 export class Computer {
   id: number;
   name: string;
-  introduced: Date;
-  discontinued: Date;
+  introducedDate: string;
+  discontinuedDate: string;
   company: Company;
 }
