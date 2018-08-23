@@ -26,8 +26,8 @@
     <td mat-cell *matCellDef="let computer" [attr.colspan]="displayedColumns.length">
       <div class="example-element-detail"
            [@detailExpand]="computer == expandedComputer ? 'expanded' : 'collapsed'">
-        <div class="table">
-            <app-computer-update class="table" [computer]="computer"></app-computer-update>
+        <div class="update">
+            <app-computers-update [computer]="computer"></app-computers-update>
             <button mat-icon-button (click)="doDelete(computer)"><mat-icon>delete</mat-icon></button>
         </div>
       </div>
