@@ -12,14 +12,6 @@ const routes: Routes = [
     component: ComputersListComponent
   },
   {
-    path: 'computers/addComputer',
-    component: ComputersAddComponent
-  },
-  {
-    path: 'computers/:id',
-    component: ComputersUpdateComponent
-  },
-  {
     path: 'companies',
     component: CompaniesListComponent
   }

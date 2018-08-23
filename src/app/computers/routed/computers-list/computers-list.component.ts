@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ComputersAddComponent } from '../computers-add/computers-add.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MatSnackBar } from '@angular/material';
+import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-computers-list',
@@ -28,15 +30,27 @@ export class ComputersListComponent implements OnInit {
 
   constructor(
     private _computerService: ComputersService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
+    const dialogRef = this.dialog.open(ProgressBarComponent);
+    dialogRef.disableClose = true;
+
     this._computerService.getAllComputer().subscribe(computers => {
       this.computers = new MatTableDataSource(computers);
       this.computers.paginator = this.paginator;
+      dialogRef.close();
     },
-      error => console.error(error), () => {});
+      error => {
+        console.error(error);
+        dialogRef.close();
+        this.snackBar.open('An error occured', '', {
+          duration: 1000,
+         });
+      },
+      () => {});
   }
 
   applyFilter(filterValue: string) {
@@ -55,7 +69,19 @@ export class ComputersListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {this.computers.data.push(result); this.computers._updateChangeSubscription(); });
   }
 
-  // onDelete(computer: Computer) {
-  //  this.computers.splice(this.computers.indexOf(computer), 1);
-  // }
+   doDelete(computer: Computer) {
+     this._computerService.delete(computer).subscribe(
+       () => {
+        this.computers.data.splice(this.computers.data.indexOf(computer), 1);
+        this.computers._updateChangeSubscription();
+        this.snackBar.open('The computer has been deleted', '', { duration: 1000 });
+       },
+       error => {
+        console.log(error);
+        this.snackBar.open('An error occured', '', {
+         duration: 1000,
+        });
+      }
+    );
+   }
 }

@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ComputersAddComponent } from './computers-add/computers-add.component';
 import { ComputersUpdateComponent } from './computers-update/computers-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComputerUpdateComponent } from './computer-update/computer-update.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ComputersListComponent,
     ComputersAddComponent,
-    ComputersUpdateComponent
+    ComputersUpdateComponent,
+    ComputerUpdateComponent
   ]
 })
 export class ComputersRoutedModule { }

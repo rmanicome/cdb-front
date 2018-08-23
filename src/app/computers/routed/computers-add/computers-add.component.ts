@@ -51,7 +51,7 @@ export class ComputersAddComponent implements OnInit {
 
       this._computerService.add(this.computer).subscribe(
         () => {
-          this.snackBar.open('Done', '', {
+          this.snackBar.open('The computer has been added', '', {
             duration: 1000,
           });
           this.dialogRef.close(this.computer);
@@ -63,8 +63,6 @@ export class ComputersAddComponent implements OnInit {
           });
         },
         () => {});
-    } else {
-      this.name.updateValueAndValidity();
     }
   }
 
