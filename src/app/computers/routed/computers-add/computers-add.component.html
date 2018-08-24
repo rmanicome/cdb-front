@@ -13,15 +13,15 @@
   </mat-form-field>
 
   <mat-form-field>
-      <input matInput [min]="computer.introducedDate" [max]="today" [matDatepicker]="discontinued"placeholder="Discontinued Date" [(ngModel)]="discontinuedDate">
+      <input matInput [min]="introducedDate" [max]="today" [matDatepicker]="discontinued"placeholder="Discontinued Date" [(ngModel)]="discontinuedDate">
       <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
       <mat-datepicker #discontinued></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
     <mat-select placeholder="Company" [(ngModel)]="companyId">
-      <mat-option value=null>---</mat-option>
-      <mat-option *ngFor="let company of companies" value="{{company.id}}">{{company.name}}</mat-option>
+      <mat-option [value]="-1">---</mat-option>
+      <mat-option *ngFor="let company of companies" [value]="company.id">{{company.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 

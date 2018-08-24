@@ -1,29 +1,25 @@
-<td>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Name" [formControl]="name" required value="{{computer.name}}" [(ngModel)]="computer.name">
-    <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
-  </mat-form-field>
-</td>
-<td>
-  <mat-form-field style="margin-top: 5px">
-    <input matInput [max]="today" [matDatepicker]="introduced" placeholder="Introduced Date" value="{{computer.introducedDate}}" [(ngModel)]="introducedDate">
-    <mat-datepicker-toggle matSuffix [for]="introduced"></mat-datepicker-toggle>
-    <mat-datepicker #introduced></mat-datepicker>
-  </mat-form-field>
-</td>
-<td>
-  <mat-form-field>
-    <input matInput [min]="introducedDate" [max]="today" [matDatepicker]="discontinued" value="{{computer.discontinuedDate}}" placeholder="Discontinued Date" [(ngModel)]="discontinuedDate">
-    <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
-    <mat-datepicker #discontinued></mat-datepicker>
-  </mat-form-field>
-</td>
-<td>
-  <mat-form-field>
-    <mat-select placeholder="Company" [(ngModel)]="companyId">
-      <mat-option value=null>---</mat-option>
-      <mat-option *ngFor="let company of companies" value="{{company.id}}">{{company.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</td>
+<mat-form-field class="update">
+  <input matInput type="text" [formControl]="name" required [(ngModel)]="computer.name">
+  <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+</mat-form-field>
+
+<mat-form-field class="update">
+  <input matInput [max]="today" [matDatepicker]="introduced" [(ngModel)]="introducedDate">
+  <mat-datepicker-toggle matSuffix [for]="introduced"></mat-datepicker-toggle>
+  <mat-datepicker #introduced></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="update">
+  <input matInput [min]="introducedDate" [max]="today" [matDatepicker]="discontinued" [(ngModel)]="discontinuedDate">
+  <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
+  <mat-datepicker #discontinued></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="update">
+  <mat-select [(value)]="companyId">
+    <mat-option [value]="-1">---</mat-option>
+    <mat-option *ngFor="let company of companies" [value]="company.id">{{company.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
 <button mat-icon-button (click)="update()"><mat-icon>send</mat-icon></button>

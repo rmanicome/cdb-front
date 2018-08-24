@@ -5,26 +5,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ComputersAddComponent } from '../computers-add/computers-add.component';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-computers-list',
   templateUrl: './computers-list.component.html',
-  styleUrls: ['./computers-list.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  styleUrls: ['./computers-list.component.scss']
 })
 export class ComputersListComponent implements OnInit {
   computers: MatTableDataSource<Computer>;
-  expandedComputer: Computer;
-  displayedColumns: string[] = ['Name', 'Introduced', 'Discontinued', 'Manufacturer'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -68,20 +58,4 @@ export class ComputersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {this.computers.data.push(result); this.computers._updateChangeSubscription(); });
   }
-
-   doDelete(computer: Computer) {
-     this._computerService.delete(computer).subscribe(
-       () => {
-        this.computers.data.splice(this.computers.data.indexOf(computer), 1);
-        this.computers._updateChangeSubscription();
-        this.snackBar.open('The computer has been deleted', '', { duration: 1000 });
-       },
-       error => {
-        console.log(error);
-        this.snackBar.open('An error occured', '', {
-         duration: 1000,
-        });
-      }
-    );
-   }
 }

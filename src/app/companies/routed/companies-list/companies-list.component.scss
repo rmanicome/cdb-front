@@ -1,0 +1,41 @@
+.container {
+  margin-top: 30px;
+  margin-left: 5%;
+  width: 90%;
+
+  .company-list {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+
+  .company-detail {
+    margin: 8px;
+  }
+  @media only screen and (min-width: 550px) {
+    .company-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .company-list {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}
+
+.form {
+  width: 90%;
+  margin-left: 1%
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
