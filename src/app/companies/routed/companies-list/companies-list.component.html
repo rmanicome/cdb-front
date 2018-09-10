@@ -2,7 +2,7 @@
   <mat-toolbar>
     <mat-toolbar-row>
       <mat-form-field class="form">
-        <input matInput placeholder="Filter">
+        <input matInput [(ngModel)]="search" placeholder="Filter">
       </mat-form-field>
       <span class="example-spacer"></span>
       <button mat-icon-button  routerLink="/computers"><mat-icon>toggle_on</mat-icon></button>
@@ -10,6 +10,6 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="company-list">
-    <app-companies-detail class="company-detail" *ngFor="let company of companies" [company]="company"></app-companies-detail>
+    <app-companies-detail class="company-detail" *ngFor="let company of companies | filter: search" [company]="company"></app-companies-detail>
   </div>
 </div>

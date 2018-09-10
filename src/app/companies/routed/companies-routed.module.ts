@@ -7,6 +7,7 @@ import { CompaniesDetailComponent } from './companies-detail/companies-detail.co
 import { CompaniesAddComponent } from './companies-add/companies-add.component';
 import { CompaniesUpdateComponent } from './companies-update/companies-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from '../shared/filter.pipe';
 
 @NgModule({
   imports: [
@@ -19,7 +20,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     CompaniesListComponent,
     CompaniesDetailComponent,
     CompaniesAddComponent,
-    CompaniesUpdateComponent
+    CompaniesUpdateComponent,
+    FilterPipe
+  ],
+  exports: [
+    FilterPipe
   ],
   entryComponents: [
     CompaniesAddComponent,

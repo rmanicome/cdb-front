@@ -11,6 +11,7 @@ import { CompaniesAddComponent } from '../companies-add/companies-add.component'
 })
 export class CompaniesListComponent implements OnInit {
   companies: Company[];
+  search: string;
 
   constructor(
     private _companiesService: CompaniesService,
