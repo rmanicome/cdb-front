@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatTableDataSource, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { Computer } from '../../../shared/models/computer.model';
 import { ComputersService } from '../../shared/computers.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
