@@ -5,6 +5,7 @@ import { ComputersTableComponent } from '../../../computers/routed/computers-tab
 import { ComputersService } from '../../../computers/shared/computers.service';
 import { CompaniesUpdateComponent } from '../companies-update/companies-update.component';
 import { CompaniesService } from '../../shared/companies.service';
+import { Computer } from '../../../shared/models/computer.model';
 
 @Component({
   selector: 'app-companies-detail',
@@ -13,6 +14,7 @@ import { CompaniesService } from '../../shared/companies.service';
 })
 export class CompaniesDetailComponent implements OnInit {
   @Input() company: Company;
+  computerList: Computer[];
   @Output() deleted: EventEmitter<any> = new EventEmitter();
 
   constructor(

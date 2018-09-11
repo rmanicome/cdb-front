@@ -3,6 +3,7 @@ import { CompaniesService } from '../../shared/companies.service';
 import { Company } from '../../../shared/models/company.model';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { CompaniesAddComponent } from '../companies-add/companies-add.component';
+import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-companies-list',
@@ -20,7 +21,25 @@ export class CompaniesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._companiesService.getAllCompanies().subscribe(companies => this.companies = companies);
+    setTimeout(() =>  {
+      const dialogRef = this.dialog.open(ProgressBarComponent);
+      dialogRef.disableClose = true;
+
+      this._companiesService.getAllCompanies().subscribe(
+        companies => {
+          this.companies = companies;
+          dialogRef.close();
+        },
+        error => {
+          console.error(error);
+          dialogRef.close();
+          this.snackBar.open('An error occured', '', {
+            duration: 1000,
+          });
+        },
+        () => {}
+      );
+    });
   }
 
   openAddPage() {

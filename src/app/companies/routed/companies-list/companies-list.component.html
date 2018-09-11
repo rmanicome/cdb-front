@@ -5,7 +5,14 @@
         <input matInput [(ngModel)]="search" placeholder="Filter">
       </mat-form-field>
       <span class="example-spacer"></span>
-      <button mat-icon-button  routerLink="/computers"><mat-icon>toggle_on</mat-icon></button>
+      <mat-chip-list>
+          <mat-chip routerLink="/computers">
+            <mat-chip-list>
+              <mat-chip disabled>Computer</mat-chip>
+              <mat-chip disabled color="primary" selected>Company</mat-chip>
+            </mat-chip-list>
+          </mat-chip>
+      </mat-chip-list>
       <button mat-icon-button (click)="openAddPage()"><mat-icon>add</mat-icon></button>
     </mat-toolbar-row>
   </mat-toolbar>
