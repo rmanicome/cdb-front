@@ -28,4 +28,8 @@ export class CompaniesListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => this.companies.push(result));
   }
+
+  onDelete(company: Company) {
+    this.companies.splice(this.companies.indexOf(company), 1);
+  }
 }

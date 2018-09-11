@@ -47,5 +47,5 @@ export class ComputersTableComponent implements OnInit {
         });
       }
     );
-   }
+  }
 }

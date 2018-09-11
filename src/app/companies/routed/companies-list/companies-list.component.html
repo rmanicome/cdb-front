@@ -10,6 +10,6 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="company-list">
-    <app-companies-detail class="company-detail" *ngFor="let company of companies | filter: search" [company]="company"></app-companies-detail>
+    <app-companies-detail class="company-detail" (deleted)="onDelete($event)" *ngFor="let company of companies | filter: search" [company]="company"></app-companies-detail>
   </div>
 </div>

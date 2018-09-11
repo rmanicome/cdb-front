@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompaniesService {
-  private url = 'http://127.0.0.1:8080/cdb/api/v1.0.0/companies';
+  private url = 'http://10.0.1.96:8080/cdb/api/v1.0.0/companies';
 
   constructor(
     private _httpClient: HttpClient
@@ -19,5 +19,17 @@ export class CompaniesService {
 
   getById(id: string): Observable<Company> {
     return this._httpClient.get<Company>(`${this.url}/detail/${id}`);
+  }
+
+  add(company: Company): Observable<Company> {
+    return this._httpClient.post<Company>(this.url, company);
+  }
+
+  update(company: Company): Observable<Company> {
+    return this._httpClient.put<Company>(`${this.url}/${company.id}`, company);
+  }
+
+  delete(company: Company): Observable<Company> {
+    return this._httpClient.delete<Company>(`${this.url}/${company.id}`);
   }
 }
