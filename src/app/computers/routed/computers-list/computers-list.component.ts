@@ -25,22 +25,24 @@ export class ComputersListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const dialogRef = this.dialog.open(ProgressBarComponent);
-    dialogRef.disableClose = true;
+    setTimeout(() =>  {
+      const dialogRef = this.dialog.open(ProgressBarComponent);
+      dialogRef.disableClose = true;
 
-    this._computerService.getAllComputer().subscribe(computers => {
-      this.computers = new MatTableDataSource(computers);
-      this.computers.paginator = this.paginator;
-      dialogRef.close();
-    },
-      error => {
-        console.error(error);
+      this._computerService.getAllComputer().subscribe(computers => {
+        this.computers = new MatTableDataSource(computers);
+        this.computers.paginator = this.paginator;
         dialogRef.close();
-        this.snackBar.open('An error occured', '', {
-          duration: 1000,
-         });
       },
-      () => {});
+        error => {
+          console.error(error);
+          dialogRef.close();
+          this.snackBar.open('An error occured', '', {
+            duration: 1000,
+          });
+        },
+        () => {});
+    });
   }
 
   applyFilter(filterValue: string) {
