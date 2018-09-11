@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Company } from '../../../shared/models/company.model';
 import { CompaniesService } from '../../shared/companies.service';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { Company } from '../../../shared/models/company.model';
 
 @Component({
   selector: 'app-companies-add',
