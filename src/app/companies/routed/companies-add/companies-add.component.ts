@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../../../shared/models/company.model';
 import { CompaniesService } from '../../shared/companies.service';
 import { FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
+import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-companies-add',
@@ -15,14 +16,35 @@ export class CompaniesAddComponent implements OnInit {
 
   constructor(
     private _companyService: CompaniesService,
-    public dialogRef: MatDialogRef<CompaniesAddComponent>,
+    public currentDialog: MatDialogRef<CompaniesAddComponent>,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
   }
 
   sendForm() {
+    const dialogRef = this.dialog.open(ProgressBarComponent);
+    dialogRef.disableClose = true;
 
+    this._companyService.add(this.company).subscribe(
+      () => {
+        dialogRef.close();
+        this.snackBar.open('The computer has been added', '', {
+          duration: 1000,
+        });
+        this._companyService.getAllCompanies().subscribe(companies => this.company.id = companies[companies.length - 1].id);
+        this.currentDialog.close(this.company);
+      },
+      error => {
+        dialogRef.close();
+        console.log(error);
+        this.snackBar.open('An error occured', '', {
+          duration: 1000,
+        });
+      }
+    );
   }
 
   getNameErrorMessage() {

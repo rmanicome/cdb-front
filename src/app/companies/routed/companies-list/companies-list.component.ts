@@ -26,7 +26,11 @@ export class CompaniesListComponent implements OnInit {
   openAddPage() {
     const dialogRef = this.dialog.open(CompaniesAddComponent);
 
-    dialogRef.afterClosed().subscribe(result => this.companies.push(result));
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.companies.push(result);
+      }
+    });
   }
 
   onDelete(company: Company) {
