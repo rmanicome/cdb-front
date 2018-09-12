@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Computer DataBase</span>
+    <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>

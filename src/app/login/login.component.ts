@@ -1,58 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
-import { AlertService, AuthenticationService } from '../_services';
+@Component({
+  // selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent {
+  message: string;
+  email: string;
+  password: string;
 
-@Component({templateUrl: 'login.component.html'})
-export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    loading = false;
-    submitted = false;
-    returnUrl: string;
+  constructor(public authService: AuthService, public router: Router) {
+    this.setMessage();
+  }
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private alertService: AlertService) {}
+  setMessage() {
+    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in:' : 'out');
+  }
 
-    ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+  login() {
+    this.message = 'Trying to log in ...';
 
-        // reset login status
-        this.authenticationService.logout();
+    this.authService.login(this.email, this.password).subscribe(() => {
+      this.setMessage();
+      if (this.authService.isLoggedIn) {
+        const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/computers';
 
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    }
+        // Redirect the user
+        this.router.navigate([redirect]);
+      }
+    });
+  }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.loginForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
+  logout() {
+    this.authService.logout();
+    this.setMessage();
+  }
 }
+//   {
+//   template: `
+//     <h2>LOGIN</h2>
+//     <p>{{message}}</p>
+//     <p>
+//       <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+//       <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+//     </p>`
+// })

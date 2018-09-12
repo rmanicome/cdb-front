@@ -10,6 +10,7 @@ import { ComputersModule } from './computers/computers.module';
 import { CompaniesModule } from './companies/companies.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { LoginRoutingModule } from './app/login-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     ComputersModule,
     CompaniesModule,
-    AppRoutingModule
+    LoginRoutingModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
