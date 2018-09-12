@@ -9,27 +9,29 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LoginComponent {
   message: string;
-  email: string;
+  username: string;
   password: string;
 
   constructor(public authService: AuthService, public router: Router) {
     this.setMessage();
+
   }
 
   setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in:' : 'out');
+    this.message =  (this.authService.isLoggedIn ? 'welcome, ' + this.authService.name : ' logged out');
   }
 
   login() {
     this.message = 'Trying to log in ...';
 
-    this.authService.login(this.email, this.password).subscribe(() => {
-      this.setMessage();
+    this.authService.login(this.username, this.password).subscribe(() => {
       if (this.authService.isLoggedIn) {
+        this.setMessage();
         const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/computers';
-
         // Redirect the user
         this.router.navigate([redirect]);
+      } else {
+        this.message = 'error in username or password.';
       }
     });
   }
@@ -39,12 +41,3 @@ export class LoginComponent {
     this.setMessage();
   }
 }
-//   {
-//   template: `
-//     <h2>LOGIN</h2>
-//     <p>{{message}}</p>
-//     <p>
-//       <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-//       <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-//     </p>`
-// })
