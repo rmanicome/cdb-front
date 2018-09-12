@@ -15,6 +15,7 @@ export class HeaderComponent {
     private _bottomSheet: MatBottomSheet
   ) {
     translate.setDefaultLang('en');
+    translate.use('en');
   }
 
   switchLanguage(language: string) {
