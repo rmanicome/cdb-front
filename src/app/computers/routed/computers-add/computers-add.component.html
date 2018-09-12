@@ -1,32 +1,32 @@
 <div class="example-container">
-  <mat-card-title>Add Computer</mat-card-title>
+  <mat-card-title>{{ "computer.add" | translate }}</mat-card-title>
 
   <mat-form-field>
-    <input matInput type="text" placeholder="Name" [formControl]="name" required [(ngModel)]="computer.name">
+    <input matInput type="text" placeholder="{{ 'name' | translate }}" [formControl]="name" required [(ngModel)]="computer.name">
     <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field style="margin-top: 5px">
-    <input matInput [max]="today" [matDatepicker]="introduced" placeholder="Introduced Date" [(ngModel)]="introducedDate">
+    <input matInput [max]="today" [matDatepicker]="introduced" placeholder="{{ 'computer.introduced' | translate }}" [(ngModel)]="introducedDate">
     <mat-datepicker-toggle matSuffix [for]="introduced"></mat-datepicker-toggle>
     <mat-datepicker #introduced></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
-      <input matInput [min]="introducedDate" [max]="today" [matDatepicker]="discontinued"placeholder="Discontinued Date" [(ngModel)]="discontinuedDate">
+      <input matInput [min]="introducedDate" [max]="today" [matDatepicker]="discontinued" placeholder="{{ 'computer.discontinued' | translate }}" [(ngModel)]="discontinuedDate">
       <mat-datepicker-toggle matSuffix [for]="discontinued"></mat-datepicker-toggle>
       <mat-datepicker #discontinued></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Company" [(ngModel)]="companyId">
+    <mat-select placeholder="{{ 'company' | translate }}" [(ngModel)]="companyId">
       <mat-option [value]="-1">---</mat-option>
       <mat-option *ngFor="let company of companies" [value]="company.id">{{company.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <div style="margin-top: 5px;">
-    <button mat-raised-button style='width: 50%;' class="button" (click)="sendForm()">Create</button>
-    <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button style='width: 50%;' class="button" (click)="sendForm()">{{ 'create' | translate }}</button>
+    <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="dialogRef.close()">{{ 'cancel' | translate }}</button>
   </div>
 </div>

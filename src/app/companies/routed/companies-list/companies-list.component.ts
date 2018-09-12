@@ -4,6 +4,7 @@ import { Company } from '../../../shared/models/company.model';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { CompaniesAddComponent } from '../companies-add/companies-add.component';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies-list',
@@ -17,7 +18,8 @@ export class CompaniesListComponent implements OnInit {
   constructor(
     private _companiesService: CompaniesService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class CompaniesListComponent implements OnInit {
         error => {
           console.error(error);
           dialogRef.close();
-          this.snackBar.open('An error occured', '', {
+          this.snackBar.open(this._translate.instant('error.server'), '', {
             duration: 1000,
           });
         },

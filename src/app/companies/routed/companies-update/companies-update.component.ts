@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { CompaniesService } from '../../shared/companies.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies-update',
@@ -18,7 +19,8 @@ export class CompaniesUpdateComponent implements OnInit {
     public currentDialog: MatDialogRef<CompaniesUpdateComponent>,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -33,14 +35,14 @@ export class CompaniesUpdateComponent implements OnInit {
       () => {
         dialogRef.close();
         this.currentDialog.close();
-        this.snackBar.open('The computer has been updated', '', {
+        this.snackBar.open(this._translate.instant('company.updated'), '', {
           duration: 1000,
         });
       },
       error => {
         dialogRef.close();
         console.log(error);
-        this.snackBar.open('An error occured', '', {
+        this.snackBar.open(this._translate.instant('error.server'), '', {
           duration: 1000,
         });
       }
@@ -48,6 +50,6 @@ export class CompaniesUpdateComponent implements OnInit {
   }
 
   getNameErrorMessage() {
-    return this.name.hasError('required') ? 'You must enter a value' : '';
+    return this.name.hasError('required') ? this._translate.instant('error.name') : '';
   }
 }

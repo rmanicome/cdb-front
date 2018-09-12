@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ComputersAddComponent } from '../computers-add/computers-add.component';
 import { MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-computers-list',
@@ -21,7 +22,8 @@ export class ComputersListComponent implements OnInit {
   constructor(
     private _computerService: ComputersService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class ComputersListComponent implements OnInit {
         error => {
           console.error(error);
           dialogRef.close();
-          this.snackBar.open('An error occured', '', {
+          this.snackBar.open(this._translate.instant('error.server'), '', {
             duration: 1000,
           });
         },

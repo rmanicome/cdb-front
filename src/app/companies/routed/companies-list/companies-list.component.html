@@ -2,14 +2,14 @@
   <mat-toolbar>
     <mat-toolbar-row>
       <mat-form-field class="form">
-        <input matInput [(ngModel)]="search" placeholder="Filter">
+        <input matInput [(ngModel)]="search" placeholder="{{ 'filter' | translate }}">
       </mat-form-field>
       <span class="example-spacer"></span>
       <mat-chip-list>
           <mat-chip routerLink="/computers">
             <mat-chip-list>
-              <mat-chip disabled>Computer</mat-chip>
-              <mat-chip disabled color="primary" selected>Company</mat-chip>
+              <mat-chip disabled>{{ "computer" | translate }}</mat-chip>
+              <mat-chip disabled color="primary" selected>{{ "company" | translate }}</mat-chip>
             </mat-chip-list>
           </mat-chip>
       </mat-chip-list>

@@ -1,7 +1,12 @@
 <table mat-table
        [dataSource]="computers" multiTemplateDataRows class="table">
   <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <th mat-header-cell *matHeaderCellDef [ngPlural]="column">
+        <ng-template ngPluralCase="=Name">{{ "name" | translate }}</ng-template>
+        <ng-template ngPluralCase="=Introduced">{{ "computer.introduced" | translate }}</ng-template>
+        <ng-template ngPluralCase="=Discontinued">{{ "computer.discontinued" | translate }}</ng-template>
+        <ng-template ngPluralCase="=Manufacturer">{{ "computer.manufacturer" | translate }}</ng-template>
+    </th>
     <td mat-cell *matCellDef="let computer" [ngPlural]="column">
       <ng-template ngPluralCase="=Name">{{computer.name}}</ng-template>
       <ng-template ngPluralCase="=Introduced">{{computer.introducedDate}}</ng-template>

@@ -4,6 +4,7 @@ import { CompaniesService } from '../../shared/companies.service';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies-add',
@@ -18,7 +19,8 @@ export class CompaniesAddComponent implements OnInit {
     private _companyService: CompaniesService,
     public currentDialog: MatDialogRef<CompaniesAddComponent>,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class CompaniesAddComponent implements OnInit {
     this._companyService.add(this.company).subscribe(
       () => {
         dialogRef.close();
-        this.snackBar.open('The computer has been added', '', {
+        this.snackBar.open(this._translate.instant('company.added'), '', {
           duration: 1000,
         });
         this._companyService.getAllCompanies().subscribe(companies => this.company.id = companies[companies.length - 1].id);
@@ -40,7 +42,7 @@ export class CompaniesAddComponent implements OnInit {
       error => {
         dialogRef.close();
         console.log(error);
-        this.snackBar.open('An error occured', '', {
+        this.snackBar.open(this._translate.instant('error.server'), '', {
           duration: 1000,
         });
       }
@@ -48,6 +50,6 @@ export class CompaniesAddComponent implements OnInit {
   }
 
   getNameErrorMessage() {
-    return this.name.hasError('required') ? 'You must enter a value' : '';
+    return this.name.hasError('required') ? this._translate.instant('errro.name') : '';
   }
 }

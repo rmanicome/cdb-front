@@ -1,0 +1,31 @@
+{
+  "title": "Computer DataBase",
+
+  "name": "Nom",
+  "create": "Créer",
+  "update": "Mettre à jour",
+  "cancel": "Annuler",
+  "show": "Ordinateurs",
+  "filter": "Filtrer",
+
+  "company": "Entreprise",
+  "company.picture": "Lien du logo",
+  "company.add": "Ajouter une Entreprise",
+  "company.update": "Modifier une Entreprise",
+  "company.added": "Entreprise ajoutée",
+  "company.updated": "Entreprise modifiée",
+  "company.deleted": "Entreprise supprimée",
+
+  "computer": "Ordinateur",
+  "computer.introduced": "Date d'introduction",
+  "computer.discontinued": "Date d'abandon",
+  "computer.manufacturer": "Entreprise",
+  "computer.add": "Ajouter un Ordinateur",
+  "computer.update": "Modifier un Ordinateur",
+  "computer.added": "Ordinateur ajouté",
+  "computer.updated": "Ordinateur modifié",
+  "computer.deleted": "Ordinateur supprimé",
+
+  "error.server": "Une erreur est survenue",
+  "error.name": "Veuillez entrer un nom"
+}

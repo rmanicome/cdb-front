@@ -6,6 +6,7 @@ import { CompaniesUpdateComponent } from '../companies-update/companies-update.c
 import { CompaniesService } from '../../shared/companies.service';
 import { Computer } from '../../../shared/models/computer.model';
 import { CompaniesComputersTableComponent } from '../companies-computers-table/companies-computers-table.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies-detail',
@@ -21,7 +22,8 @@ export class CompaniesDetailComponent implements OnInit {
     private _companyService: CompaniesService,
     private _computerService: ComputersService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -50,11 +52,11 @@ export class CompaniesDetailComponent implements OnInit {
     this._companyService.delete(this.company).subscribe(
       () => {
         this.deleted.emit(this.company);
-        this.snackBar.open('The computer has been deleted', '', { duration: 1000 });
+        this.snackBar.open(this._translate.instant('company.deleted'), '', { duration: 1000 });
       },
       error => {
         console.log(error);
-        this.snackBar.open('An error occured', '', {
+        this.snackBar.open(this._translate.instant('error.server'), '', {
           duration: 1000,
         });
       }

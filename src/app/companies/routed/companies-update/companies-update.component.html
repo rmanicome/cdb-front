@@ -1,17 +1,17 @@
 <div class="example-container">
-  <mat-card-title>Update Company</mat-card-title>
+  <mat-card-title>{{ "company.update" | translate }}</mat-card-title>
 
   <mat-form-field>
-    <input matInput type="text" placeholder="Name" [formControl]="name" required [(ngModel)]="company.name">
+    <input matInput type="text" placeholder="{{ 'name' | translate }}" [formControl]="name" required [(ngModel)]="company.name">
     <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="text" placeholder="Picture link" required [(ngModel)]="company.picture">
+    <input matInput type="text" placeholder="{{ 'company.picture' | translate }}" required [(ngModel)]="company.picture">
   </mat-form-field>
 
   <div style="margin-top: 5px;">
-    <button mat-raised-button style='width: 50%;' class="button" (click)="update()">Update</button>
-    <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="currentDialog.close()">Cancel</button>
+    <button mat-raised-button style='width: 50%;' class="button" (click)="update()">{{ "update" | translate }}</button>
+    <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="currentDialog.close()">{{ "cancel" | translate }}</button>
   </div>
 </div>

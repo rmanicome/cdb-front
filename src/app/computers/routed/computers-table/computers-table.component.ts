@@ -3,6 +3,7 @@ import { MatTableDataSource, MatSnackBar, MAT_DIALOG_DATA } from '@angular/mater
 import { Computer } from '../../../shared/models/computer.model';
 import { ComputersService } from '../../shared/computers.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-computers-table',
@@ -23,7 +24,8 @@ export class ComputersTableComponent implements OnInit {
 
   constructor(
     private _computerService: ComputersService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -38,11 +40,11 @@ export class ComputersTableComponent implements OnInit {
       () => {
         this.computers.data.splice(this.computers.data.indexOf(computer), 1);
         this.computers._updateChangeSubscription();
-        this.snackBar.open('The computer has been deleted', '', { duration: 1000 });
+        this.snackBar.open(this._translate.instant('computer.deleted'), '', { duration: 1000 });
       },
       error => {
         console.log(error);
-        this.snackBar.open('An error occured', '', {
+        this.snackBar.open(this._translate.instant('error.server'), '', {
           duration: 1000,
         });
       }
