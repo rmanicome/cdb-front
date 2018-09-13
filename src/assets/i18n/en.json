@@ -7,6 +7,13 @@
   "cancel": "Cancel",
   "show": "Show Computers",
   "filter": "Filter",
+  "username": "Username",
+  "password": "Password",
+
+  "login": "Login",
+  "logout": "Logout",
+  "welcome": "Welcome",
+  "goodbye": "You are now logged out",
 
   "company": "Company",
   "company.picture": "Picture link",
@@ -26,10 +33,11 @@
   "computer.updated": "The computer has been updated",
   "computer.deleted": "The computer has been deleted",
 
-  "user.name": "username",
-  "user.add": "Register now",
-  "user.password": "password",
+  "user.name": "Username",
+  "user.add": "Register now!",
+  "user.password": "Password",
 
   "error.server": "An error occured",
-  "error.name": "You must enter a value"
+  "error.name": "You must enter a value",
+  "error.id": "The username or the password is incorrect"
 }

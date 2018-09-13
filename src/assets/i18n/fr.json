@@ -7,6 +7,13 @@
   "cancel": "Annuler",
   "show": "Ordinateurs",
   "filter": "Filtrer",
+  "username": "Nom d'utilisateur",
+  "password": "Mot de passe",
+
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "welcome": "Bienvenue",
+  "goodbye": "Vous êtes bien déconnecté",
 
   "company": "Entreprise",
   "company.picture": "Lien du logo",
@@ -31,5 +38,6 @@
   "user.password": "mot de passe",
 
   "error.server": "Une erreur est survenue",
-  "error.name": "Veuillez entrer un nom"
+  "error.name": "Veuillez entrer un nom",
+  "error.id": "Le nom d'utilisateur ou le mot de passe est incorrect"
 }

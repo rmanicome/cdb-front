@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { MatBottomSheet } from '@angular/material';
+import { MatBottomSheet, MatDialog } from '@angular/material';
 import { LanguageChoiceComponent } from './language-choice/language-choice.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent {
     public authService: AuthService,
      public router: Router,
     public translate: TranslateService,
-    private _bottomSheet: MatBottomSheet
+    private _bottomSheet: MatBottomSheet,
+    public dialog: MatDialog,
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
@@ -41,8 +43,9 @@ export class HeaderComponent {
   }
 
   register() {
-      // Redirect the user
-      this.router.navigate(['register']);
+    const dialogRef = this.dialog.open(RegisterComponent);
+
+    dialogRef.afterClosed().subscribe(result => {});
   }
 
 
