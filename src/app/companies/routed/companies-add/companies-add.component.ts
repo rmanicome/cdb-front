@@ -50,6 +50,6 @@ export class CompaniesAddComponent implements OnInit {
   }
 
   getNameErrorMessage() {
-    return this.name.hasError('required') ? this._translate.instant('errro.name') : '';
+    return this.name.hasError('required') ? this._translate.instant('error.name') : '';
   }
 }
