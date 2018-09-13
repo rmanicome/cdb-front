@@ -33,9 +33,9 @@
   "computer.updated": "Ordinateur modifié",
   "computer.deleted": "Ordinateur supprimé",
 
-  "user.name": "nom d'utilisateur",
-  "user.add": "joignez vous à nous",
-  "user.password": "mot de passe",
+  "user.name": "Nom d'utilisateur",
+  "user.add": "Joignez vous à nous",
+  "user.password": "Mot de passe",
 
   "error.server": "Une erreur est survenue",
   "error.name": "Veuillez entrer un nom",
