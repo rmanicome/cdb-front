@@ -40,6 +40,11 @@ export class HeaderComponent {
     }});
   }
 
+  register() {
+      // Redirect the user
+      this.router.navigate(['register']);
+  }
+
 
   languageChoice() {
     const sheet = this._bottomSheet.open(LanguageChoiceComponent);

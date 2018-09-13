@@ -26,6 +26,10 @@
   "computer.updated": "The computer has been updated",
   "computer.deleted": "The computer has been deleted",
 
+  "user.name": "username",
+  "user.add": "Register now",
+  "user.password": "password",
+
   "error.server": "An error occured",
   "error.name": "You must enter a value"
 }

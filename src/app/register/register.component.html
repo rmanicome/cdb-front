@@ -1,0 +1,17 @@
+<div class="example-container">
+    <mat-card-title>{{ "user.add" | translate }}</mat-card-title>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="{{ 'name' | translate }}"  required [(ngModel)]="user.username">
+      <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="{{ 'user.password' | translate }}" [(ngModel)]="user.password">
+    </mat-form-field>
+
+    <div style="margin-top: 5px;">
+      <button mat-raised-button style='width: 50%;' class="button" (click)="sendForm()">{{ "create" | translate }}</button>
+      <button mat-raised-button style='width: 50%; float: right;' color="warn" class="button" (click)="currentDialog.close()">{{ "cancel" | translate }}</button>
+    </div>
+  </div>

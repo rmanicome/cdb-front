@@ -55,4 +55,9 @@ export class AuthService {
       delay(1000),
       tap(val => this.isLoggedIn = false));
     }
+
+
+    add(user: User): Observable<User> {
+      return this.http.post<User>(this.url, user);
+    }
 }

@@ -5,11 +5,16 @@ import { ComputersListComponent } from './computers/routed/computers-list/comput
 import { CompaniesListComponent } from './companies/routed/companies-list/companies-list.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth-guard.service';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'computers',

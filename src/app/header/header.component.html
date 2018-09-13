@@ -7,5 +7,6 @@
       <ng-template ngPluralCase='=fr'><img src="../../../assets/pictures/flag_fr.png"></ng-template>
     </button>
     <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+    <button (click)="register()" *ngIf="!authService.isLoggedIn">Sign In</button>
   </mat-toolbar-row>
 </mat-toolbar>
