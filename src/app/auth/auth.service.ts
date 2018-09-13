@@ -28,7 +28,7 @@ export class AuthService {
     this.name = name;
     let userExist = false;
       this.getUser(name).subscribe((user) => {
-        if (user != null) {
+        if (user && user.password === password) {
           userExist = true;
         }
       });
