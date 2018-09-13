@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Company } from '../../../shared/models/company.model';
 import { CompaniesService } from '../../shared/companies.service';
 import { FormControl, Validators } from '@angular/forms';
+
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
+import { Company } from '../../../shared/models/company.model';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-companies-add',

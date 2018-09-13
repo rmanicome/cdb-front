@@ -9,11 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComputersModule } from './computers/computers.module';
 import { CompaniesModule } from './companies/companies.module';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/auth.service';
+import { LoginRoutingModule } from './app/login-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +26,10 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     ComputersModule,
     CompaniesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginRoutingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
