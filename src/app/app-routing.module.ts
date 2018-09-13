@@ -26,7 +26,6 @@ const routes: Routes = [
     component: CompaniesListComponent,
     canActivate: [AuthGuard]
   },
-  // { path: 'computers', redirectTo: 'login' }
 ];
 
 

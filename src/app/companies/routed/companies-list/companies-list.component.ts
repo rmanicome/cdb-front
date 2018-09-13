@@ -5,6 +5,8 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { CompaniesAddComponent } from '../companies-add/companies-add.component';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-companies-list',
@@ -17,12 +19,18 @@ export class CompaniesListComponent implements OnInit {
 
   constructor(
     private _companiesService: CompaniesService,
+    private _authService: AuthService,
+    public router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private _translate: TranslateService
   ) { }
 
   ngOnInit() {
+    if ( this._authService.role !== 'ADMIN') {
+      this.router.navigate(['/computers']);
+    }
+
     setTimeout(() =>  {
       const dialogRef = this.dialog.open(ProgressBarComponent);
       dialogRef.disableClose = true;

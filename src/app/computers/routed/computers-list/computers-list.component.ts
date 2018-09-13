@@ -8,6 +8,7 @@ import { ComputersAddComponent } from '../computers-add/computers-add.component'
 import { MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-computers-list',
@@ -16,17 +17,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ComputersListComponent implements OnInit {
   computers: MatTableDataSource<Computer>;
+  role: Boolean;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private _computerService: ComputersService,
+    private _authService: AuthService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private _translate: TranslateService
   ) { }
 
   ngOnInit(): void {
+    this.role = this._authService.role === 'ADMIN';
+
     setTimeout(() =>  {
       const dialogRef = this.dialog.open(ProgressBarComponent);
       dialogRef.disableClose = true;

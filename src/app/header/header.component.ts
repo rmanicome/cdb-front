@@ -14,11 +14,9 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class HeaderComponent {
 
-
-
   constructor(
     public authService: AuthService,
-     public router: Router,
+    public router: Router,
     public translate: TranslateService,
     private _bottomSheet: MatBottomSheet,
     public dialog: MatDialog,
