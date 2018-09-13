@@ -18,7 +18,7 @@ export class LoginComponent {
   }
 
   setMessage() {
-    this.message =  (this.authService.isLoggedIn ? 'welcome, ' + this.authService.name : ' logged out');
+    this.message =  (this.authService.isLoggedIn ? 'welcome, ' + this.authService.name: ' logged out');
   }
 
   login() {

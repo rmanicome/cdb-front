@@ -20,7 +20,7 @@ export class AuthService {
 
 
   getUser(name: string): Observable<User> {
-    return this.http.post<User>(this.url, name);
+    return this.http.get<User>(this.url + '/' +  name);
   }
 
 
@@ -34,7 +34,7 @@ export class AuthService {
       });
       return of(userExist).pipe(
         delay(1000),
-        tap(val => this.isLoggedIn = true));
+        tap(val => this.isLoggedIn = userExist));
   }
 
   // login(name: string, password: string): Observable<boolean> {
