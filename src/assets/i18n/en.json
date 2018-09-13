@@ -39,5 +39,8 @@
 
   "error.server": "An error occured",
   "error.name": "You must enter a value",
-  "error.id": "The username or the password is incorrect"
+  "error.id": "The username or the password is incorrect",
+
+  "signup": "Sign Up"
+
 }

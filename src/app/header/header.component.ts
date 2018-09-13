@@ -41,7 +41,10 @@ export class HeaderComponent {
   }
 
   register() {
-    const dialogRef = this.dialog.open(RegisterComponent);
+    const dialogRef = this.dialog.open(RegisterComponent,
+      {
+        width: '30%'
+      });
 
     dialogRef.afterClosed().subscribe(result => {});
   }

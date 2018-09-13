@@ -6,8 +6,8 @@
       <ng-template ngPluralCase='=en'><img src="../../../assets/pictures/flag_en.png"></ng-template>
       <ng-template ngPluralCase='=fr'><img src="../../../assets/pictures/flag_fr.png"></ng-template>
     </button>
-    <button mat-flat-button color ="primary" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    <button mat-flat-button color ="primary" (click)="register()" *ngIf="!authService.isLoggedIn">Sign Up</button>
+    <button mat-flat-button color ="primary" (click)="logout()" *ngIf="authService.isLoggedIn">{{ 'logout' | translate }}</button>
+    <button mat-flat-button color ="primary" (click)="register()" *ngIf="!authService.isLoggedIn">{{ 'signup' | translate }}</button>
 
   </mat-toolbar-row>
 </mat-toolbar>

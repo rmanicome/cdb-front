@@ -4,6 +4,7 @@ import { User } from '../shared/models/user.model';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     public currentDialog: MatDialogRef<RegisterComponent>,
     public snackBar: MatSnackBar,
+    public router: Router,
     private _translate: TranslateService
   ) { }
 
@@ -29,6 +31,10 @@ export class RegisterComponent implements OnInit {
 
     this.authService.add(this.user).subscribe(
       () => {
+        this.currentDialog.close();
+        this.authService.role = 'USER';
+        this.authService.isLoggedIn = true;
+        this.router.navigate(['/computers']);
         this.snackBar.open(this._translate.instant('register complete'), '', {
           duration: 1000,
         });

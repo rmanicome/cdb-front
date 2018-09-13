@@ -39,5 +39,7 @@
 
   "error.server": "Une erreur est survenue",
   "error.name": "Veuillez entrer un nom",
-  "error.id": "Le nom d'utilisateur ou le mot de passe est incorrect"
+  "error.id": "Le nom d'utilisateur ou le mot de passe est incorrect",
+
+  "signup": "Inscription"
 }
