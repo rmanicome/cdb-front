@@ -7,6 +7,13 @@
   "cancel": "Cancel",
   "show": "Show Computers",
   "filter": "Filter",
+  "username": "Username",
+  "password": "Password",
+
+  "login": "Login",
+  "logout": "Logout",
+  "welcome": "Welcome",
+  "goodbye": "You are now logged out",
 
   "company": "Company",
   "company.picture": "Picture link",
@@ -27,5 +34,6 @@
   "computer.deleted": "The computer has been deleted",
 
   "error.server": "An error occured",
-  "error.name": "You must enter a value"
+  "error.name": "You must enter a value",
+  "error.id": "The username or the password is incorrect"
 }
