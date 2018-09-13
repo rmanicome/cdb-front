@@ -1,2 +1,10 @@
-<button mat-button (click)="changeLanguage('en')"><img src="../../../assets/pictures/flag_en.png"> English</button>
-<button mat-button (click)="changeLanguage('fr')"><img src="../../../assets/pictures/flag_fr.png"> Français</button>
+<span [ngPlural]="translate.currentLang">
+  <ng-template ngPluralCase="=en">
+    <button mat-button disabled (click)="changeLanguage('en')"><img src="../../../assets/pictures/flag_en.png"> English</button>
+    <button mat-button (click)="changeLanguage('fr')"><img src="../../../assets/pictures/flag_fr.png"> Français</button>
+  </ng-template>
+  <ng-template ngPluralCase="=fr">
+    <button mat-button (click)="changeLanguage('en')"><img src="../../../assets/pictures/flag_en.png"> English</button>
+    <button mat-button disabled (click)="changeLanguage('fr')"><img src="../../../assets/pictures/flag_fr.png"> Français</button>
+  </ng-template>
+</span>

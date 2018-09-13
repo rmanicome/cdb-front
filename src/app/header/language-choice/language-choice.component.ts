@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-choice',
@@ -8,7 +9,8 @@ import { MatBottomSheetRef } from '@angular/material';
 })
 export class LanguageChoiceComponent {
   constructor(
-    private _currentBottomSheet: MatBottomSheetRef<LanguageChoiceComponent>
+    private _currentBottomSheet: MatBottomSheetRef<LanguageChoiceComponent>,
+    public translate: TranslateService
   ) { }
 
   changeLanguage(language: string) {

@@ -6,7 +6,7 @@
       </mat-form-field>
       <span class="example-spacer"></span>
       <mat-chip-list>
-        <mat-chip routerLink="/companies">
+        <mat-chip routerLink="/companies" *ngIf="role">
           <mat-chip-list>
             <mat-chip disabled color="primary" selected>{{ 'computer' | translate }}</mat-chip>
             <mat-chip disabled>{{ 'company' | translate }}</mat-chip>

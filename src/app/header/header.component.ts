@@ -13,11 +13,9 @@ import { LanguageChoiceComponent } from './language-choice/language-choice.compo
 })
 export class HeaderComponent {
 
-
-
   constructor(
     public authService: AuthService,
-     public router: Router,
+    public router: Router,
     public translate: TranslateService,
     private _bottomSheet: MatBottomSheet
   ) {
