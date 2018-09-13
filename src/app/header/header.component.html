@@ -3,8 +3,8 @@
     <span translate>title</span>
     <span class="space"></span>
     <button mat-icon-button (click)='languageChoice()' [ngPlural]='translate.currentLang'>
-      <ng-template ngPluralCase='=en'><img mat-card-image src="../../../assets/pictures/flag_en.png"></ng-template>
-      <ng-template ngPluralCase='=fr'><img mat-card-image src="../../../assets/pictures/flag_fr.png"></ng-template>
+      <ng-template ngPluralCase='=en'><img src="../../../assets/pictures/flag_en.png"></ng-template>
+      <ng-template ngPluralCase='=fr'><img src="../../../assets/pictures/flag_fr.png"></ng-template>
     </button>
     <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
   </mat-toolbar-row>
