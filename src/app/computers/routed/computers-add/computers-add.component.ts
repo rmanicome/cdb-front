@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ComputersService } from '../../shared/computers.service';
 import { CompaniesService } from '../../../companies/shared/companies.service';
 import { Company } from '../../../shared/models/company.model';
@@ -7,6 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-computers-add',
@@ -27,7 +28,8 @@ export class ComputersAddComponent implements OnInit {
     private _computerService: ComputersService,
     private _companyService: CompaniesService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -59,24 +61,25 @@ export class ComputersAddComponent implements OnInit {
       this._computerService.add(this.computer).subscribe(
         () => {
           dialogRef.close();
-          this.snackBar.open('The computer has been added', '', {
+          this.snackBar.open(this._translate.instant('computer.added'), '', {
             duration: 1000,
           });
-          this.dialogRef.close(this.computer);
           this._computerService.getAllComputer().subscribe(computers => this.computer.id = computers[computers.length - 1].id);
+          this.dialogRef.close(this.computer);
         },
         error => {
           dialogRef.close();
           console.log(error);
-          this.snackBar.open('An error occured', '', {
+          this.snackBar.open(this._translate.instant('error.server'), '', {
             duration: 1000,
           });
         },
-        () => {});
+        () => {}
+      );
     }
   }
 
   getNameErrorMessage() {
-    return this.name.hasError('required') ? 'You must enter a value' : '';
+    return this.name.hasError('required') ? this._translate.instant('error.name') : '';
   }
 }

@@ -8,6 +8,7 @@ import { CompaniesAddComponent } from './companies-add/companies-add.component';
 import { CompaniesUpdateComponent } from './companies-update/companies-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from '../shared/filter.pipe';
+import { CompaniesComputersTableComponent } from './companies-computers-table/companies-computers-table.component';
 
 @NgModule({
   imports: [
@@ -21,14 +22,16 @@ import { FilterPipe } from '../shared/filter.pipe';
     CompaniesDetailComponent,
     CompaniesAddComponent,
     CompaniesUpdateComponent,
-    FilterPipe
+    FilterPipe,
+    CompaniesComputersTableComponent
   ],
   exports: [
     FilterPipe
   ],
   entryComponents: [
     CompaniesAddComponent,
-    CompaniesUpdateComponent
+    CompaniesUpdateComponent,
+    CompaniesComputersTableComponent
   ]
 })
 export class CompaniesRoutedModule { }

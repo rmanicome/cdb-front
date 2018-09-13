@@ -1,0 +1,24 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> {{ "name" | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let computer"> {{computer.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="introduced">
+    <mat-header-cell *matHeaderCellDef> {{ "computer.introduced" | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let computer"> {{computer.introducedDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="discontinued">
+    <mat-header-cell *matHeaderCellDef> {{ "computer.discontinued" | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let computer"> {{computer.discontinuedDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="company">
+    <mat-header-cell *matHeaderCellDef> {{ "computer.manufacturer" | translate }} </mat-header-cell>
+    <mat-cell *matCellDef="let computer"> {{computer.company == null ? "" : computer.company.name}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>

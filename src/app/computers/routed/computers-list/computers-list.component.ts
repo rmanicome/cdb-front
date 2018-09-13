@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ComputersAddComponent } from '../computers-add/computers-add.component';
 import { MatSnackBar } from '@angular/material';
 import { ProgressBarComponent } from '../../../shared/progress-bar/progress-bar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-computers-list',
@@ -21,26 +22,29 @@ export class ComputersListComponent implements OnInit {
   constructor(
     private _computerService: ComputersService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    const dialogRef = this.dialog.open(ProgressBarComponent);
-    dialogRef.disableClose = true;
+    setTimeout(() =>  {
+      const dialogRef = this.dialog.open(ProgressBarComponent);
+      dialogRef.disableClose = true;
 
-    this._computerService.getAllComputer().subscribe(computers => {
-      this.computers = new MatTableDataSource(computers);
-      this.computers.paginator = this.paginator;
-      dialogRef.close();
-    },
-      error => {
-        console.error(error);
+      this._computerService.getAllComputer().subscribe(computers => {
+        this.computers = new MatTableDataSource(computers);
+        this.computers.paginator = this.paginator;
         dialogRef.close();
-        this.snackBar.open('An error occured', '', {
-          duration: 1000,
-         });
       },
-      () => {});
+        error => {
+          console.error(error);
+          dialogRef.close();
+          this.snackBar.open(this._translate.instant('error.server'), '', {
+            duration: 1000,
+          });
+        },
+        () => {});
+    });
   }
 
   applyFilter(filterValue: string) {

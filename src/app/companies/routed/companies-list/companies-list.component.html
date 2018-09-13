@@ -2,14 +2,21 @@
   <mat-toolbar>
     <mat-toolbar-row>
       <mat-form-field class="form">
-        <input matInput [(ngModel)]="search" placeholder="Filter">
+        <input matInput [(ngModel)]="search" placeholder="{{ 'filter' | translate }}">
       </mat-form-field>
       <span class="example-spacer"></span>
-      <button mat-icon-button  routerLink="/computers"><mat-icon>toggle_on</mat-icon></button>
+      <mat-chip-list>
+          <mat-chip routerLink="/computers">
+            <mat-chip-list>
+              <mat-chip disabled>{{ "computer" | translate }}</mat-chip>
+              <mat-chip disabled color="primary" selected>{{ "company" | translate }}</mat-chip>
+            </mat-chip-list>
+          </mat-chip>
+      </mat-chip-list>
       <button mat-icon-button (click)="openAddPage()"><mat-icon>add</mat-icon></button>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="company-list">
-    <app-companies-detail class="company-detail" *ngFor="let company of companies | filter: search" [company]="company"></app-companies-detail>
+    <app-companies-detail class="company-detail" (deleted)="onDelete($event)" *ngFor="let company of companies | filter: search" [company]="company"></app-companies-detail>
   </div>
 </div>

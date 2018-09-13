@@ -1,0 +1,31 @@
+{
+  "title": "Computer DataBase",
+
+  "name": "Name",
+  "create": "Create",
+  "update": "Update",
+  "cancel": "Cancel",
+  "show": "Show Computers",
+  "filter": "Filter",
+
+  "company": "Company",
+  "company.picture": "Picture link",
+  "company.add": "Add Company",
+  "company.update": "Update Company",
+  "company.added": "The company has been added",
+  "company.updated": "The company has been updated",
+  "company.deleted": "The company has been deleted",
+
+  "computer": "Computer",
+  "computer.introduced": "Introduced Date",
+  "computer.discontinued": "Discontinued Date",
+  "computer.manufacturer": "Manufacturer",
+  "computer.add": "Add Computer",
+  "computer.update": "Update Computer",
+  "computer.added": "The computer has been added",
+  "computer.updated": "The computer has been updated",
+  "computer.deleted": "The computer has been deleted",
+
+  "error.server": "An error occured",
+  "error.name": "You must enter a value"
+}

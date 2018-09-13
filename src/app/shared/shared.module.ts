@@ -11,12 +11,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatBottomSheetModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LanguageChoiceComponent } from '../header/language-choice/language-choice.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   imports: [
@@ -36,7 +45,16 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     MatNativeDateModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatBottomSheetModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     FormsModule,
@@ -54,13 +72,18 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     MatNativeDateModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatBottomSheetModule,
+    TranslateModule
   ],
   declarations: [
-    ProgressBarComponent
+    ProgressBarComponent,
+    LanguageChoiceComponent
   ],
   entryComponents: [
-    ProgressBarComponent
+    ProgressBarComponent,
+    LanguageChoiceComponent
   ]
 })
 export class SharedModule { }

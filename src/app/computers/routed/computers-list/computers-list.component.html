@@ -2,10 +2,17 @@
   <mat-toolbar>
     <mat-toolbar-row>
       <mat-form-field class="form">
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'filter' | translate }}">
       </mat-form-field>
       <span class="example-spacer"></span>
-      <button mat-icon-button style='float: right;' routerLink="/companies"><mat-icon>toggle_off</mat-icon></button>
+      <mat-chip-list>
+        <mat-chip routerLink="/companies">
+          <mat-chip-list>
+            <mat-chip disabled color="primary" selected>{{ 'computer' | translate }}</mat-chip>
+            <mat-chip disabled>{{ 'company' | translate }}</mat-chip>
+          </mat-chip-list>
+        </mat-chip>
+      </mat-chip-list>
       <button mat-icon-button style='float: right;' (click)="openAddPage()"><mat-icon>add</mat-icon></button>
     </mat-toolbar-row>
   </mat-toolbar>
